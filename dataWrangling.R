@@ -33,3 +33,16 @@ advanced_date <- which(month(ssa_long$Date) >= 10)
 
 year(ssa_long$Date[advanced_date]) <- year(ssa_long$Date[advanced_date]) - 1
 
+# Widen dataset
+summary(ssa_long)
+
+ssa_long$Fiscal_Year <- NULL
+ssa_long$month <- NULL
+
+ssa_long$application_method <- as.factor(ssa_long$application_method)
+summary(ssa_long)
+
+ssa <- spread(ssa_long, application_method, applications)
+print(ssa, n = 20)
+
+
