@@ -45,4 +45,8 @@ summary(ssa_long)
 ssa <- spread(ssa_long, application_method, applications)
 print(ssa, n = 20)
 
+# Visualize dataset
+ssa$online_percentage <- ssa$Internet / ssa$Total * 100
 
+ggplot(data = ssa, mapping = aes(x = Date, y = online_percentage)) +
+  geom_point()
