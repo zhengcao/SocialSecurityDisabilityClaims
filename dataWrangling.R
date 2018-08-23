@@ -28,3 +28,8 @@ unique(ssa_long$Fiscal_Year)
 ssa_long$Date <- dmy(paste('01', ssa_long$month, ssa_long$Fiscal_Year))
 unique(ssa_long$Date)
 
+# Handle fiscal years in dataset
+advanced_date <- which(month(ssa_long$Date) >= 10)
+
+year(ssa_long$Date[advanced_date]) <- year(ssa_long$Date[advanced_date]) - 1
+
